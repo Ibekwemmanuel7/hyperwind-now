@@ -1,6 +1,11 @@
-# Data files 
-data/processed/*.nc 
-data/processed/*.csv 
-__pycache__/ 
-.ipynb_checkpoints/ 
-*.pyc 
+# Large data files - not tracked in git
+data/processed/*.nc
+data/processed/*.csv
+data/processed/asos*.csv
+data/processed/hyperwind*.csv
+data/processed/.ipynb_checkpoints/
+models/*.pt
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+.env
