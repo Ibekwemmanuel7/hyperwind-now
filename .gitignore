@@ -1,0 +1,6 @@
+# Data files 
+data/processed/*.nc 
+data/processed/*.csv 
+__pycache__/ 
+.ipynb_checkpoints/ 
+*.pyc 
