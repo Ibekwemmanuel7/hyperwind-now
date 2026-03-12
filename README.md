@@ -40,9 +40,7 @@ ERA5 Reanalysis + ASOS Surface Observations
 
 &nbsp;             ↓
 
-&nbsp;  Calibrated Wind Hazard Forecast
-
-&nbsp;  (CLEAR TO FLY / NO-FLY alert)
+&nbsp;  Calibrated Wind Hazard Forecast (CLEAR TO FLY / NO-FLY alert)
 
 ---
 \## Results
