@@ -35,8 +35,9 @@ ERA5 Reanalysis + ASOS Surface Observations
 &nbsp;  Calibrated Wind Hazard Forecast (CLEAR TO FLY / NO-FLY alert)
 
 ---
-\## Results
-\### Module 2: TrajGRU Wind Nowcasting
+\Results
+
+\Module 2: TrajGRU Wind Nowcasting
 | Lead Time | RMSE (m/s) | Skill vs Persistence |
 
 |-----------|------------|----------------------|
@@ -45,7 +46,7 @@ ERA5 Reanalysis + ASOS Surface Observations
 | 9h        | 1.488      | 17.8%                |
 | 12h       | 1.634      | 19.0%                |
 
-\### Module 4: EnKF Assimilation (2021-04-06T21:00 UTC)
+\ Module 4: EnKF Assimilation (2021-04-06T21:00 UTC)
 | Station | Obs (m/s) | ERA5 Background | Innovation |
 |---------|-----------|-----------------|------------|
 | DFW     | 11.40     | 10.23           | +1.17      |
