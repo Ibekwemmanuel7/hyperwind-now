@@ -1,5 +1,5 @@
 \# HyperWind-Now
-\*\*Physics-Constrained ML + Data Assimilation for Low-Altitude Urban Wind Forecasting over DFW\*\*
+\*Physics-Constrained ML + Data Assimilation for Low-Altitude Urban Wind Forecasting over DFW\*
 Built as a portfolio project targeting operational drone and UAM weather applications,
 inspired by operational low-altitude weather intelligence pipelines used in drone and UAM decision-support systems.
 ---
