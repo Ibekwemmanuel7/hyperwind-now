@@ -1,5 +1,5 @@
 HyperWind-Now
-
+---
 A physics-constrained ML + data assimilation for low-altitude urban wind forecasting over DFW. Built as a portfolio project targeting operational drone and UAM weather applications. This project is inspired by operational low-altitude weather intelligence pipelines used in drone and UAM decision-support systems.
 
 ---
@@ -10,7 +10,7 @@ Low-altitude urban wind forecasting (0–500m AGL) is the hardest unsolved probl
 outflows that threaten small aircraft. This project builds a prototype end-to-end system that addresses this gap using ML nowcasting, physics constraints, and real-time data assimilation.
 
 ---
-\## System Architecture
+System Architecture
 ---
 ERA5 Reanalysis + ASOS Surface Observations
 
