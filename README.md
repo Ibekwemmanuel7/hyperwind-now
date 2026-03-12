@@ -93,28 +93,30 @@ Data Sources
 |--------|-----------|--------|
 | ERA5 (CDS API) | u10, v10, msl, u/v at 1000/975/950 hPa | 2020–2021 |
 | ASOS (Iowa Mesonet) | wind speed, wind direction | 2020–2021 |
----
 
-\## Notebooks
+
+Notebooks
+---
 | Notebook | Description |
 |----------|-------------|
 | `module1\_data\_pipeline.ipynb` | ERA5 + ASOS download, QC, feature engineering |
 | `module2\_trajgru.ipynb` | TrajGRU model training and evaluation |
 | `module3\_physics.ipynb` | Divergence correction and microburst detection |
 | `module4\_enkf.ipynb` | Ensemble Kalman Filter data assimilation |
----
 
-\## Installation
+
+Installation
+---
 ```bash
 conda create -n hyperwind python=3.11
 conda activate hyperwind
 pip install climetlab xarray numpy pandas torch requests
 pip install cartopy scikit-learn tqdm scipy matplotlib netCDF4
 ```
-You will also need a CDS API key for ERA5 access:
-https://cds.climate.copernicus.eu/api-how-to
+You will also need a CDS API key for ERA5 access: https://cds.climate.copernicus.eu/api-how-to
+
+Key techniques
 ---
-\## Key Techniques
 \- \*\*TrajGRU\*\* — Trajectory Gated Recurrent Unit for sequential wind nowcasting
 \- \*\*Percentile feature engineering\*\* — spatial distribution compression (9 quantiles)
 \- \*\*Physics constraints\*\* — iterative divergence correction enforcing mass conservation
@@ -123,7 +125,8 @@ https://cds.climate.copernicus.eu/api-how-to
 \- \*\*Temporal train/val/test split\*\* — prevents data leakage in time series ML
 
 ---
-\## Relevance to Operational Drone Weather
+Relevance to operational drone weather
+---
 This system directly addresses the core challenges in low-altitude UAM weather:
 1\. \*\*Nowcasting\*\* — 0–12h wind forecasts at 3h resolution for flight planning
 2\. \*\*Physics consistency\*\* — mass-conserving wind fields reduce false alarms
@@ -133,14 +136,14 @@ This system directly addresses the core challenges in low-altitude UAM weather:
 
 &nbsp;  suitable for drone operator decision support
 ---
-\## Author
+Author
+---
 \*\*Emmanuel Ibekwe\*\*
 \- Email: ibekwemmanuel@gmail.com
 ---
-## Limitations
-
-This prototype uses ERA5 reanalysis rather than operational NWP
-and therefore does not yet represent real-time forecasting skill.
+Limitations
+---
+This prototype uses ERA5 reanalysis rather than operational NWP and therefore does not yet represent real-time forecasting skill.
 
 Future work will integrate HRRR or ECMWF IFS forecasts.
 
