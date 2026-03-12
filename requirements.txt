@@ -1,0 +1,12 @@
+numpy
+pandas
+xarray
+netCDF4
+requests
+scipy
+matplotlib
+streamlit
+herbie-data
+cfgrib
+pyproj
+eccodes
