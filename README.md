@@ -46,7 +46,8 @@ Module 2: TrajGRU Wind Nowcasting
 | 9h        | 1.488      | 17.8%                |
 | 12h       | 1.634      | 19.0%                |
 
-\ Module 4: EnKF Assimilation (2021-04-06T21:00 UTC)
+Module 4: EnKF Assimilation (2021-04-06T21:00 UTC)
+---
 | Station | Obs (m/s) | ERA5 Background | Innovation |
 |---------|-----------|-----------------|------------|
 | DFW     | 11.40     | 10.23           | +1.17      |
@@ -55,9 +56,10 @@ Module 2: TrajGRU Wind Nowcasting
 | AFW     | 12.15     | 10.24           | +1.91      |
 | DTO     | 11.63     | 9.88            | +1.75      |
 | RBD     | 10.34     | 10.14           | +0.20      |
----
 
-\## Results Plots
+
+Results Plots
+---
 | Module | Plot |
 |--------|------|
 | Module 1 | ERA5 wind fields + ASOS time series |
@@ -67,7 +69,8 @@ Module 2: TrajGRU Wind Nowcasting
 See the `results/` folder for all diagnostic plots.
 
 ---
-\## Domain
+Domain
+---
 \*\*Dallas-Fort Worth, Texas\*\*
 \- Latitude: 32.25° – 33.25° N
 \- Longitude: 97.75° – 96.50° W
