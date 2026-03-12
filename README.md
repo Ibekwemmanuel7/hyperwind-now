@@ -4,13 +4,59 @@ A physics-constrained ML + data assimilation system for low-altitude urban wind 
 
 ---
 
-# Motivation
+## Motivation
 
 Low-altitude urban wind forecasting (0–500m AGL) is the hardest unsolved problem in drone and eVTOL operations. Standard NWP models operate at 3–25 km resolution — far too coarse to capture the building wakes, terrain channeling, and microburst outflows that threaten small aircraft. This project builds a prototype end-to-end system that addresses this gap using ML nowcasting, physics constraints, real-time data assimilation, and operational NWP ingestion.
 
 ---
 
-# System Architecture
+## Live Demo
+
+```
+python run_live.py --plot
+```
+
+```
+HyperWind-Now | Starting live pipeline
+Cycle: 2021-04-06 21:00 UTC
+
+[1/4] Fetching HRRR background...     Done in 0.0s (cached)
+[2/4] Fetching ASOS observations...   6 stations loaded
+[3/4] Running EnKF assimilation...    6 stations assimilated
+[4/4] Running microburst detection...
+
+============================================================
+  HyperWind-Now | DFW Low-Altitude Wind Hazard Forecast
+============================================================
+  Cycle   : 2021-04-06 21:00 UTC
+  Source  : HRRR background + live ASOS
+  Run at  : 2026-03-12 15:10 UTC
+------------------------------------------------------------
+  Station       Obs   Background   Innovation
+  --------  -------  -----------  -----------
+  DFW        11.32        8.90       +2.42  m/s
+  DAL         5.66        8.16       -2.50  m/s
+  FTW        11.32        8.97       +2.35  m/s
+  AFW        11.83       10.56       +1.27  m/s
+  DTO        11.32       11.10       +0.22  m/s
+  RBD        11.32        8.16       +3.16  m/s
+------------------------------------------------------------
+  Domain mean background : 9.31 m/s
+  Domain mean analysis   : 10.33 m/s
+  Max surface divergence : 4.91e-05 s⁻¹
+============================================================
+
+  ██████████████████████████████████████████
+  ██                                      ██
+  ██          CLEAR TO FLY                ██
+  ██    Conditions within normal limits    ██
+  ██                                      ██
+  ██████████████████████████████████████████
+```
+
+---
+
+## System Architecture
 
 ```
 HRRR Forecast (NOAA AWS S3, 3 km, hourly) + ASOS Surface Observations
@@ -36,7 +82,7 @@ HRRR Forecast (NOAA AWS S3, 3 km, hourly) + ASOS Surface Observations
 
 ---
 
-# Results
+## Results
 
 ### Module 2: TrajGRU Wind Nowcasting
 
@@ -58,14 +104,14 @@ HRRR Forecast (NOAA AWS S3, 3 km, hourly) + ASOS Surface Observations
 | DTO     | 11.63     | 9.88            | +1.75      |
 | RBD     | 10.34     | 10.14           | +0.20      |
 
-### Module 5: HRRR Real-Time Pipeline (2021-04-06T21:00 UTC)
+### Module 6: ERA5 vs HRRR Background Validation (2021-04-06T21:00 UTC)
 
-| Step | Status | Detail |
-|------|--------|--------|
-| Fetch | ✅ | 11 variables from `s3://noaa-hrrr-bdp-pds` in ~9s |
-| Reproject | ✅ | LCC → 0.25° lat/lon, wind rotation corrected |
-| QC | ✅ | PASS — 0 warnings, 0 failures |
-| Export | ✅ | 41.8 KB ERA5-schema NetCDF |
+| Metric | ERA5 | HRRR | Improvement |
+|--------|------|------|-------------|
+| Background RMSE vs ASOS | 6.43 m/s | 2.21 m/s | **−65.7%** |
+| Post-EnKF Analysis RMSE | 0.73 m/s | 0.27 m/s | **−63.0%** |
+
+HRRR's radar assimilation and 3 km resolution reduce background error by 65.7% compared to ERA5 reanalysis, resulting in smaller EnKF corrections and a more accurate final analysis.
 
 ### Diagnostic Plots
 
@@ -76,6 +122,7 @@ HRRR Forecast (NOAA AWS S3, 3 km, hourly) + ASOS Surface Observations
 | Module 3 | Physics correction + divergence maps + microburst risk |
 | Module 4 | EnKF background vs analysis + innovations + ensemble spread |
 | Module 5 | HRRR DFW snapshot + resolution comparison + architecture diagram |
+| Module 6 | ERA5 vs HRRR background validation + innovation distributions |
 
 See the `results/` folder for all diagnostic plots.
 
@@ -105,15 +152,17 @@ See the `results/` folder for all diagnostic plots.
 
 ---
 
-## Notebooks
+## Notebooks & Scripts
 
-| Notebook | Description |
-|----------|-------------|
-| `module1_data_pipeline.ipynb` | ERA5 + ASOS download, QC, feature engineering |
-| `module2_trajgru.ipynb` | TrajGRU model training and evaluation |
-| `module3_physics.ipynb` | Divergence correction and microburst detection |
-| `module4_enkf.ipynb` | Ensemble Kalman Filter data assimilation |
-| `module5_hrrr_ingestion.ipynb` | HRRR real-time ingestion pipeline |
+| File | Description |
+|------|-------------|
+| `run_live.py` | One-command operational pipeline: HRRR → EnKF → CLEAR/NO-FLY |
+| `notebooks/module1_data_pipeline.ipynb` | ERA5 + ASOS download, QC, feature engineering |
+| `notebooks/module2_trajgru.ipynb` | TrajGRU model training and evaluation |
+| `notebooks/module3_physics.ipynb` | Divergence correction and microburst detection |
+| `notebooks/module4_enkf.ipynb` | Ensemble Kalman Filter data assimilation |
+| `notebooks/module5_hrrr_ingestion.ipynb` | HRRR real-time ingestion pipeline |
+| `notebooks/module6_era5_vs_hrrr.ipynb` | ERA5 vs HRRR background validation |
 
 ---
 
@@ -147,13 +196,12 @@ HRRR data is fetched from NOAA's public AWS S3 bucket — no credentials require
 
 ## Relevance to Operational Drone Weather
 
-This system directly addresses the core challenges in low-altitude UAM weather:
-
 1. **Real-time NWP** — Module 5 replaces ERA5 reanalysis with HRRR operational forecasts (3 km, hourly, ~45 min latency)
-2. **Nowcasting** — 0–12h wind forecasts at 3h resolution for flight planning
-3. **Physics consistency** — mass-conserving wind fields reduce false alarms
-4. **Real-time correction** — EnKF assimilates sparse surface observations to correct coarse NWP background, mimicking operational data assimilation cycles
-5. **Hazard alerting** — microburst detection provides binary CLEAR/NO-FLY output suitable for drone operator decision support
+2. **Quantified improvement** — HRRR background reduces EnKF analysis error by 63% vs ERA5 (Module 6)
+3. **Nowcasting** — 0–12h wind forecasts at 3h resolution for flight planning
+4. **Physics consistency** — mass-conserving wind fields reduce false alarms
+5. **Real-time correction** — EnKF assimilates sparse surface observations to correct NWP background
+6. **Hazard alerting** — microburst detection provides binary CLEAR/NO-FLY output for drone operators
 
 ---
 
@@ -166,6 +214,8 @@ This system directly addresses the core challenges in low-altitude UAM weather:
 | Availability | 3–5 month delay | ~45 min latency |
 | Radar assimilation | No | Yes (15-min cycle) |
 | Wind gust field | No | Yes |
+| Background RMSE | 6.43 m/s | 2.21 m/s |
+| Analysis RMSE (post-EnKF) | 0.73 m/s | 0.27 m/s |
 | Credentials | CDS API key | None |
 | Operational | No | **Yes** |
 
