@@ -4,14 +4,10 @@ A physics-constrained ML + data assimilation for low-altitude urban wind forecas
 
 ---
 
-\## Motivation
+Motivation
 ---
-Low-altitude urban wind forecasting (0–500m AGL) is the hardest unsolved problem
-in drone and eVTOL operations. Standard NWP models operate at 3–25km resolution —
-far too coarse to capture the building wakes, terrain channeling, and microburst
-outflows that threaten small aircraft. This project builds a prototype end-to-end
-system that addresses this gap using ML nowcasting, physics constraints, and
-real-time data assimilation.
+Low-altitude urban wind forecasting (0–500m AGL) is the hardest unsolved problem in drone and eVTOL operations. Standard NWP models operate at 3–25km resolution which is far too coarse to capture the building wakes, terrain channeling, and microburst
+outflows that threaten small aircraft. This project builds a prototype end-to-end system that addresses this gap using ML nowcasting, physics constraints, and real-time data assimilation.
 
 ---
 \## System Architecture
