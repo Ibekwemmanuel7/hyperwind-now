@@ -72,16 +72,23 @@ See the `results/` folder for all diagnostic plots.
 Domain
 ---
 Dallas-Fort Worth, Texas
+
 Latitude: 32.25° – 33.25° N
+
 Longitude: 97.75° – 96.50° W
+
 Pressure levels: 1000, 975, 950 hPa
+
 ASOS stations: DFW, DAL, FTW, AFW, DTO, RBD
+
 Spatial resolution: 0.25° ERA5 (~28 km)
+
 Domain grid: 5 × 6 cells
 
 ---
 
-\## Data Sources
+Data Sources
+---
 | Source | Variables | Period |
 |--------|-----------|--------|
 | ERA5 (CDS API) | u10, v10, msl, u/v at 1000/975/950 hPa | 2020–2021 |
