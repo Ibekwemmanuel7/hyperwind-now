@@ -1,7 +1,23 @@
 \# HyperWind-Now
+<<<<<<< Updated upstream
 \*\*Physics-Constrained ML + Data Assimilation for Low-Altitude Urban Wind Forecasting over DFW\*\*
 Built as a portfolio project targeting operational drone and UAM weather applications,
 inspired by operational low-altitude weather intelligence pipelines used in drone and UAM decision-support systems.
+=======
+
+
+
+\*\*Physics-Constrained ML + Data Assimilation for Low-Altitude urban wind forecasting over DFW\*\*
+
+
+
+Built as a portfolio project targeting operational drone and UAM weather applications,
+
+inspired by operational low-altitude weather intelligence pipelines
+
+used in drone and UAM decision-support systems.
+
+>>>>>>> Stashed changes
 ---
 
 \## Motivation
@@ -85,6 +101,14 @@ See the `results/` folder for all diagnostic plots.
 \- Latitude: 32.25° – 33.25° N
 \- Longitude: 97.75° – 96.50° W
 \- Pressure levels: 1000, 975, 950 hPa
+<<<<<<< Updated upstream
+=======
+
+Spatial resolution: 0.25° ERA5 (~28 km)
+
+Domain grid: 5 × 6 cells
+
+>>>>>>> Stashed changes
 \- ASOS stations: DFW, DAL, FTW, AFW, DTO, RBD
 \- Spatial resolution: 0.25° ERA5 (~28 km)
 \- Domain grid: 5 × 6 cells
@@ -98,6 +122,25 @@ See the `results/` folder for all diagnostic plots.
 | ASOS (Iowa Mesonet) | wind speed, wind direction | 2020–2021 |
 ---
 
+<<<<<<< Updated upstream
+=======
+
+
+\## Limitations
+
+
+
+This prototype uses ERA5 reanalysis rather than operational NWP
+
+and therefore does not yet represent real-time forecasting skill.
+
+
+
+Future work will integrate HRRR or ECMWF IFS forecasts.
+
+
+
+>>>>>>> Stashed changes
 \## Notebooks
 | Notebook | Description |
 |----------|-------------|
@@ -151,3 +194,9 @@ Future work will integrate HRRR or ECMWF IFS forecasts.
 Built using techniques from the ECMWF Machine Learning in Weather and Climate MOOC.
 ERA5 data provided by the Copernicus Climate Data Store.
 ASOS data provided by the Iowa Environmental Mesonet.
+<<<<<<< Updated upstream
+=======
+
+```
+
+>>>>>>> Stashed changes
