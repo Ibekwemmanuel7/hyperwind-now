@@ -16,27 +16,19 @@ ERA5 Reanalysis + ASOS Surface Observations
 
 &nbsp;             ↓
 
-&nbsp;  Module 1: Data Pipeline
-
-&nbsp;  (feature engineering, QC, normalization)
+&nbsp;  Module 1: Data Pipeline (feature engineering, QC, normalization)
 
 &nbsp;             ↓
 
-&nbsp;  Module 2: TrajGRU Wind Nowcasting
-
-&nbsp;  (0–12 hour wind speed forecast)
+&nbsp;  Module 2: TrajGRU Wind Nowcasting (0–12 hour wind speed forecast)
 
 &nbsp;             ↓
 
-&nbsp;  Module 3: Physics Constraint Layer
-
-&nbsp;  (divergence correction + microburst detection)
+&nbsp;  Module 3: Physics Constraint Layer (divergence correction + microburst detection)
 
 &nbsp;             ↓
 
-&nbsp;  Module 4: EnKF Data Assimilation
-
-&nbsp;  (real-time ASOS observation update)
+&nbsp;  Module 4: EnKF Data Assimilation (real-time ASOS observation update)
 
 &nbsp;             ↓
 
