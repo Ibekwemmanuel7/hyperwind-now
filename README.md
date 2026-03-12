@@ -1,4 +1,4 @@
-\*HyperWind-Now*\
+HyperWind-Now
 
 \Physics-Constrained ML + Data Assimilation for Low-Altitude Urban Wind Forecasting over DFW\
 
