@@ -35,11 +35,11 @@ ERA5 Reanalysis + ASOS Surface Observations
 &nbsp;  Calibrated Wind Hazard Forecast (CLEAR TO FLY / NO-FLY alert)
 
 ---
-\Results
-
-\Module 2: TrajGRU Wind Nowcasting
+Results
+---
+Module 2: TrajGRU Wind Nowcasting
+---
 | Lead Time | RMSE (m/s) | Skill vs Persistence |
-
 |-----------|------------|----------------------|
 | 3h        | 0.741      | 29.5%                |
 | 6h        | 1.173      | 23.9%                |
